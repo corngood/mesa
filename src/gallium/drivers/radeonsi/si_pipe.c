@@ -999,6 +999,8 @@ struct pipe_screen *radeonsi_screen_create(struct radeon_winsys *ws,
 		sscreen->b.debug_flags |= DBG(FS_CORRECT_DERIVS_AFTER_KILL);
 	if (driQueryOptionb(config->options, "radeonsi_enable_sisched"))
 		sscreen->b.debug_flags |= DBG(SI_SCHED);
+	if (driQueryOptionb(config->options, "radeonsi_disable_buffer_realloc"))
+		sscreen->b.debug_flags |= DBG(DISABLE_BUFFER_REALLOC);
 
 	if (!si_common_screen_init(&sscreen->b, ws) ||
 	    !si_init_gs_info(sscreen) ||

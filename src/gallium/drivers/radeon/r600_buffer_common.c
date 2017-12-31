@@ -613,6 +613,10 @@ struct pipe_resource *si_buffer_create(struct pipe_screen *screen,
 	struct r600_common_screen *rscreen = (struct r600_common_screen*)screen;
 	struct r600_resource *rbuffer = r600_alloc_buffer_struct(screen, templ);
 
+	// this seems to be the safest way to disable rellocation
+	if (rscreen->debug_flags & DBG(DISABLE_BUFFER_REALLOC))
+		rbuffer->b.is_shared = true;
+
 	si_init_resource_fields(rscreen, rbuffer, templ->width0, alignment);
 
 	if (templ->flags & PIPE_RESOURCE_FLAG_SPARSE)

@@ -448,3 +448,8 @@ DRI_CONF_OPT_END
 DRI_CONF_OPT_BEGIN_B(radeonsi_clear_db_cache_before_clear, def) \
         DRI_CONF_DESC(en,"Clear DB cache before fast depth clear") \
 DRI_CONF_OPT_END
+
+#define DRI_CONF_RADEONSI_DISABLE_BUFFER_REALLOC(def) \
+DRI_CONF_OPT_BEGIN_B(radeonsi_disable_buffer_realloc, def) \
+        DRI_CONF_DESC(en,"Disable reallocation of buffers") \
+DRI_CONF_OPT_END
