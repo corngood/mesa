@@ -93,6 +93,7 @@ enum {
 	DBG_NO_WC,
 	DBG_CHECK_VM,
 	DBG_RESERVE_VMID,
+	DBG_DISABLE_BUFFER_REALLOC,
 
 	/* 3D engine options: */
 	DBG_SWITCH_ON_EOP,

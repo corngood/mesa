@@ -72,6 +72,7 @@ static const struct debug_named_value debug_options[] = {
 	{ "nowc", DBG(NO_WC), "Disable GTT write combining" },
 	{ "check_vm", DBG(CHECK_VM), "Check VM faults and dump debug info." },
 	{ "reserve_vmid", DBG(RESERVE_VMID), "Force VMID reservation per context." },
+	{ "disable_buffer_realloc", DBG(DISABLE_BUFFER_REALLOC), "Disable reallocation of buffers" },
 
 	/* 3D engine options: */
 	{ "switch_on_eop", DBG(SWITCH_ON_EOP), "Program WD/IA to switch on end-of-packet." },
@@ -690,6 +691,8 @@ struct pipe_screen *radeonsi_screen_create(struct radeon_winsys *ws,
 		sscreen->debug_flags |= DBG(FS_CORRECT_DERIVS_AFTER_KILL);
 	if (driQueryOptionb(config->options, "radeonsi_enable_sisched"))
 		sscreen->debug_flags |= DBG(SI_SCHED);
+	if (driQueryOptionb(config->options, "radeonsi_disable_buffer_realloc"))
+		sscreen->debug_flags |= DBG(DISABLE_BUFFER_REALLOC);
 
 
 	if (sscreen->debug_flags & DBG(INFO))
